@@ -3,7 +3,9 @@ package org.example.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.example.pojo.Emp;
+import org.example.pojo.EmpQueryParam;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
@@ -16,6 +18,6 @@ public interface EmpMapper {
             "ORDER BY e.update_time DESC LIMIT #{start},#{pageSize}")
     public List<Emp> list(Integer start,Integer pageSize);*/
 
-    @Select("SELECT e.*,d.name deptName FROM emp e LEFT JOIN dept d ON e.dept_id=d.id ORDER BY e.update_time ")
-    public List<Emp> list();
+    //@Select("SELECT e.*,d.name deptName FROM emp e LEFT JOIN dept d ON e.dept_id=d.id ORDER BY e.update_time WHERE e.name LIKE %#{name}% AND e.gender=#{gender} AND e.create_time BEWTEEN #{begin} AND #{end}")
+    public List<Emp> list(EmpQueryParam empQueryParam);
 }
