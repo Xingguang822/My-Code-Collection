@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.example.pojo.Emp;
 import org.example.pojo.EmpQueryParam;
 import org.example.pojo.PageResult;
@@ -11,6 +12,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 @RequestMapping("/emps")
 @Slf4j
@@ -42,6 +45,20 @@ public class EmpController {
     public Result save(@RequestBody Emp emp){
         log.info("新增员工：{}",emp);
         empService.save(emp);
+        return Result.success();
+    }
+
+    /*@DeleteMapping
+    public Result delete(Integer[] ids){
+        log.info("删除员工{}", Arrays.toString(ids));
+        return Result.success();
+
+    }*/
+
+    @DeleteMapping
+    public Result delete(@RequestParam List<Integer> ids){
+        log.info("删除员工{}", ids);
+        empService.delete(ids);
         return Result.success();
     }
 }
