@@ -1,0 +1,11 @@
+package org.example.service;
+
+import org.example.pojo.EmpLog;
+import org.example.pojo.PageResult;
+
+public interface EmpLogService {
+
+    public void insertLog(EmpLog empLog);
+
+    PageResult<EmpLog> page(Integer page, Integer pageSize);
+}
