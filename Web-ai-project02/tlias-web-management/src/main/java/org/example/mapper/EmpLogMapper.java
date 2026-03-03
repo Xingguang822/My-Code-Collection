@@ -15,6 +15,6 @@ public interface EmpLogMapper {
             "values (#{operateEmpId}, #{operateTime}, #{className}, #{methodName}, #{methodParams}, #{returnValue}, #{costTime})")
     public void insert(EmpLog empLog);
 
-    @Select("select l.*, e.name operateEmpName from emp_log l left join emp e on l.id = e.id order by l.operate_time desc")
+    @Select("select l.*, e.name operateEmpName from operate_log l left join emp e on l.operate_emp_id = e.id order by l.operate_time desc")
     List<EmpLog> list();
 }

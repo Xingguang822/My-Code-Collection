@@ -43,7 +43,6 @@ public class LogAspect {
         OperateLog operateLog = new OperateLog();
         
         // 操作人ID：通常从 JWT 解析出来的 ThreadLocal 中获取
-        // 这里假设你的工具类叫 BaseContext
         operateLog.setOperateEmpId(getCurrentId());
         
         operateLog.setOperateTime(LocalDateTime.now());
